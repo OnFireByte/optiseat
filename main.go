@@ -28,6 +28,7 @@ type OptimizeResp struct {
 
 func main() {
 	http.HandleFunc("POST /optimize", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
 		var req OptimizeReq
 		err := json.NewDecoder(r.Body).Decode(&req)
 		if err != nil {
