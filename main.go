@@ -27,9 +27,11 @@ type OptimizeResp struct {
 }
 
 func main() {
-	http.HandleFunc("OPTION /optimize", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("OPTIONS /optimize", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+
+		w.WriteHeader(http.StatusNoContent)
 	})
 
 	http.HandleFunc("POST /optimize", func(w http.ResponseWriter, r *http.Request) {
